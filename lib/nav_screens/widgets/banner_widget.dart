@@ -1,9 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
+// ignore: use_key_in_widget_constructors
 class Bannerwidget extends StatefulWidget {
   @override
   State<Bannerwidget> createState() => _BannerwidgetState();
@@ -18,7 +16,7 @@ class _BannerwidgetState extends State<Bannerwidget> {
 
   getBanners() {
     return _firestore
-        .collection('banner')
+        .collection('banners')
         .get()
         .then((QuerySnapshot querySnapshot) {
       querySnapshot.docs.forEach((doc) {
@@ -49,9 +47,12 @@ class _BannerwidgetState extends State<Bannerwidget> {
           child: PageView.builder(
               itemCount: _bannerimage.length,
               itemBuilder: (context, index) {
-                return Image.network(
-                  _bannerimage[index],
-                  fit: BoxFit.cover,
+                return ClipRRect(
+                  borderRadius: BorderRadius.circular(10.0),
+                  child: Image.network(
+                    _bannerimage[index],
+                    fit: BoxFit.cover,
+                  ),
                 );
               })),
     );

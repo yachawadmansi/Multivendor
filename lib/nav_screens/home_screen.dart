@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:multivendor/nav_screens/widgets/banner_widget.dart';
+import 'package:multivendor/nav_screens/widgets/category_text.dart';
 import 'package:multivendor/nav_screens/widgets/search_input_widget.dart';
 import 'package:multivendor/nav_screens/widgets/welcome_text_screen.dart';
 
@@ -12,15 +13,20 @@ class homesreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Welcometext(),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.05,
-        ),
-        searchwidget(),
-        Bannerwidget(),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Welcometext(),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.05,
+          ),
+          searchwidget(),
+          Bannerwidget(),
+          CategoryText(),
+        ],
+      ),
     );
   }
 }
